@@ -1,0 +1,179 @@
+/* Leonida Trophy Guide — own look: Vice City dusk (dark) with a paper (light) theme.
+   No Rockstar artwork, no logos. Colours are drawn from a neon dusk palette. */
+:root {
+  --accent: #ff2e88;
+  --accent2: #ff7a3d;
+  --teal: #2de1c2;
+  --radius: 10px;
+}
+body[data-theme="dark"] {
+  --bg: #150a24;
+  --bg2: #1e0f33;
+  --card: #241640;
+  --card2: #2c1c4d;
+  --line: #3d2a63;
+  --text: #f5efe6;
+  --muted: #b9a8d6;
+  --shadow: rgba(0, 0, 0, 0.45);
+}
+body[data-theme="light"] {
+  --bg: #f7f2e7;
+  --bg2: #efe7d3;
+  --card: #fffdf6;
+  --card2: #f3ead6;
+  --line: #d8cbb0;
+  --text: #241a2e;
+  --muted: #6b5d7a;
+  --shadow: rgba(60, 40, 20, 0.12);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.5 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 18px 24px 14px;
+  background: linear-gradient(100deg, #2a0f4a 0%, #4a1040 55%, #7a1e3c 100%);
+  border-bottom: 3px solid var(--accent);
+  color: #fff;
+}
+body[data-theme="light"] .topbar {
+  background: linear-gradient(100deg, #2a0f4a 0%, #4a1040 55%, #7a1e3c 100%);
+}
+.brand { display: flex; gap: 14px; align-items: center; }
+.brand-mark {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 20px; color: #fff; letter-spacing: 1px;
+  box-shadow: 0 0 18px rgba(255, 46, 136, 0.55);
+}
+.topbar h1 { margin: 0; font-size: 26px; letter-spacing: 0.5px; }
+.subtitle { margin: 2px 0 0; color: #f3c9de; font-size: 13px; }
+.progress-wrap { min-width: 240px; text-align: right; }
+.progress-num { font-size: 24px; font-weight: 800; }
+.progress-bar {
+  height: 10px; border-radius: 6px; background: rgba(255, 255, 255, 0.25);
+  overflow: hidden; margin: 6px 0;
+}
+.progress-fill {
+  height: 100%; border-radius: 6px;
+  background: linear-gradient(90deg, var(--teal), var(--accent));
+  transition: width 0.3s;
+}
+.progress-sub { font-size: 12px; color: #f3c9de; }
+.views {
+  display: flex; gap: 6px; padding: 10px 24px;
+  background: var(--bg2); border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 5;
+}
+.view-btn {
+  border: 1px solid var(--line); background: var(--card); color: var(--text);
+  padding: 7px 14px; border-radius: 999px; cursor: pointer; font-size: 14px;
+}
+.view-btn:hover { border-color: var(--accent); }
+.view-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.layout {
+  display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr);
+  gap: 18px; padding: 18px 24px; align-items: start;
+}
+.list-col { min-width: 0; }
+.detail-col {
+  position: sticky; top: 64px;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 16px;
+}
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+.toolbar input[type="search"] {
+  flex: 1 1 200px; padding: 8px 12px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--card); color: var(--text); font-size: 14px;
+}
+.chip {
+  border: 1px solid var(--line); background: var(--card); color: var(--text);
+  padding: 5px 11px; border-radius: 999px; cursor: pointer; font-size: 13px;
+}
+.chip.active { background: var(--teal); border-color: var(--teal); color: #08231d; font-weight: 700; }
+.toggle { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); cursor: pointer; }
+.trophy {
+  display: grid; grid-template-columns: 28px 1fr auto; gap: 10px;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 12px 14px; margin-bottom: 8px;
+  cursor: pointer;
+}
+.trophy:hover { border-color: var(--accent); }
+.trophy.selected { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.trophy.earned { opacity: 0.62; }
+.trophy.earned .t-name { text-decoration: line-through; }
+.t-check { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--teal); cursor: pointer; }
+.t-name { font-weight: 700; font-size: 15px; }
+.t-desc { color: var(--muted); font-size: 13px; margin-top: 2px; }
+.t-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.badge {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted);
+}
+.badge.platinum { background: #e8f6ff; color: #0b5a78; border-color: #9fd8ef; }
+.badge.gold { background: #f5b301; color: #3d2a00; border-color: #d99a00; }
+.badge.silver { background: #c0c8d0; color: #222a33; border-color: #9aa5b1; }
+.badge.bronze { background: #c07a3e; color: #fff; border-color: #a05f28; }
+.badge.missable { background: #ff2e88; color: #fff; border-color: #ff2e88; }
+.badge.watch { background: #ff7a3d; color: #fff; border-color: #ff7a3d; }
+.badge.kind { background: var(--card2); }
+.badge.rarity { background: transparent; }
+.t-right { text-align: right; font-size: 12px; color: var(--muted); }
+.t-target { margin-top: 8px; font-size: 13px; color: var(--text); }
+.t-target .bar {
+  height: 6px; border-radius: 4px; background: var(--line); overflow: hidden; margin-top: 4px;
+}
+.t-target .bar > div { height: 100%; background: var(--teal); }
+.detail-col h2 { margin: 0 0 4px; font-size: 19px; }
+.detail-col h3 { margin: 16px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); }
+.detail-col p { margin: 6px 0; }
+.detail-col .official { color: var(--muted); font-style: italic; }
+.sources { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10px; margin-top: 12px; }
+.counter-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+.counter-row button {
+  width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--card2); color: var(--text); font-size: 18px; cursor: pointer;
+}
+.counter-row button:hover { border-color: var(--accent); }
+.counter-row input {
+  width: 90px; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--card); color: var(--text); font-size: 14px;
+}
+.notes { width: 100%; min-height: 64px; padding: 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; font-size: 13px; resize: vertical; }
+.stage { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 12px; }
+.stage h2 { margin: 0 0 2px; font-size: 17px; }
+.stage .stage-note { color: var(--muted); font-size: 13px; margin: 0 0 10px; }
+.stage .bar { height: 8px; border-radius: 5px; background: var(--line); overflow: hidden; }
+.stage .bar > div { height: 100%; background: linear-gradient(90deg, var(--teal), var(--accent)); }
+.stage ul { margin: 10px 0 0; padding-left: 18px; }
+.stage li { font-size: 13px; margin: 3px 0; }
+.stage li.done { color: var(--muted); text-decoration: line-through; }
+.callout {
+  background: var(--card2); border-left: 4px solid var(--accent);
+  border-radius: 8px; padding: 12px 14px; margin: 0 0 14px;
+}
+.callout h2 { margin: 0 0 4px; font-size: 16px; }
+.callout p { margin: 4px 0; font-size: 14px; }
+.btn {
+  border: 1px solid var(--line); background: var(--accent); color: #fff;
+  padding: 9px 16px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 700;
+}
+.btn.ghost { background: var(--card); color: var(--text); }
+.btn:hover { filter: brightness(1.1); }
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+.foot { padding: 18px 24px 28px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); }
+.empty { color: var(--muted); padding: 24px; text-align: center; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .detail-col { position: static; }
+  .topbar { flex-direction: column; }
+  .progress-wrap { text-align: left; }
+}
